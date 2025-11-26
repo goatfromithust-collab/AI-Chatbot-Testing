@@ -7,6 +7,18 @@ import { ChatHistory } from './components/ChatHistory';
 import { useChat } from './hooks/useChat';
 import { availableModels } from './data/models';
 
+/**
+ * Root UI component for the AI Assistant application.
+ *
+ * Manages the selected model and history panel visibility, connects chat state and actions
+ * from the `useChat` hook to child components, and renders the main application layout:
+ * header (branding and actions), model selector, chat area, chat input, optional history panel,
+ * and footer. The chat input is disabled while a message is being sent or when no model is selected;
+ * the Clear Chat action is shown when there are messages.
+ *
+ * @returns The top-level React element for the AI Assistant app containing header, model selector,
+ * chat area and input, conditional history panel, and footer.
+ */
 function App() {
   const [selectedModel, setSelectedModel] = React.useState('gpt-4-turbo');
   const [showHistory, setShowHistory] = React.useState(true);
